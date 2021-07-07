@@ -5,6 +5,7 @@ import Form from './Form';
 import UserForm from './UserForm';
 import CommentForm from './CommentForm';
 import Posts from './Posts';
+import CommentsList from './CommentsList';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
 
       {/* <CommentForm /> */}
 
-      <Posts />
+      {/* <Posts /> */}
+      <CommentsList />
 
     </div>
   );
