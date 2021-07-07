@@ -1,7 +1,7 @@
 import './App.css';
 import Question from './Question';
-
 import Counter from './Counter';
+import Form from './Form';
 
 function App() {
   return (
@@ -12,6 +12,8 @@ function App() {
 
       <Counter />
       <Counter />
+      
+      <Form />
     </div>
   );
 }

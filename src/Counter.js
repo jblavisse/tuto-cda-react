@@ -1,11 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function Counter() {
-    function click() {
-        console.log("J'ai été cliqué!")
+    let [score, setScore] = useState(0);
+
+    function incrementScore(event) {
+        console.log(event.target);
+        setScore(score+1);
     }
 
     return (
-        <button onClick={click}>Cliqué x fois!</button>
+        <button onClick={incrementScore}>Cliqué {score} fois!</button>
     )
 }
