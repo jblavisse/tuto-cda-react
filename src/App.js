@@ -3,11 +3,13 @@ import Question from './Question';
 import Counter from './Counter';
 import Form from './Form';
 import UserForm from './UserForm';
+import CommentForm from './CommentForm';
+import Posts from './Posts';
 
 function App() {
   return (
     <div className="App">
-      <Question title="Un titre" />
+      {/* <Question title="Un titre" />
       <Question title="Un autre titre" />
       <Question title="Truc bidule chouette" />
 
@@ -15,8 +17,12 @@ function App() {
       <Counter />
       
       <Form />
-      
-      <UserForm />
+
+      <UserForm /> */}
+
+      {/* <CommentForm /> */}
+
+      <Posts />
 
     </div>
   );
