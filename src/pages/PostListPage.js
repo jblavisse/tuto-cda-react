@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 
-export default function Posts() {
+export default function PostListPage() {
     // [] car je sais que l'API va me renvoyer un tableau
     // et donc, mon objectif c'est de faire correspondre
     // le type de valeur de l'état qui va stocker mes données de l'API

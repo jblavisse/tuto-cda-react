@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react'
-import Comment from './Comment';
+import Comment from '../components/Comment';
 import './CommentsList.css';
 
-export default function CommentsList() {
+export default function CommentListPage() {
     const [comments,setComments] = useState([]);
 
     useEffect(()=> {
