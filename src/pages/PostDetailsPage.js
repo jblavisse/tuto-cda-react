@@ -1,22 +1,21 @@
-import React from 'react'
+import axios from 'axios';
+import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom';
 
 export default function PostDetailsPage() {
     const {id} = useParams();
+    const [post, setPost] = useState({})
 
-    /* 
-    Il faudrait qu'au montage du composant, on vienne questionner
-    l'API https://jsonplaceholder.typicode.com/posts/2
-    où 2 serait la variable id
-    Puis on récupère le résultat, on le stocke dans un état,
-    et on affiche les données dans le return 
-    */
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/posts/'+ id)
+        .then(res => setPost(res.data))
+    }, [])
     
     return (
         <div>
             <h1>Article numéro {id}</h1>
-            <h2>Je suis un titre!</h2>
-            <p>lorem</p>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
         </div>
     )
 }
