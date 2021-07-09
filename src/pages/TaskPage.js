@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+import './TaskPage.css';
 
 export default function TaskPage() {
     const [title,setTitle] = useState("");
@@ -30,9 +31,47 @@ export default function TaskPage() {
         })
     }
 
+    const deleteTask = (id) => {
+        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(res => {
+            console.log(id);
+
+            // On va filtrer notre liste, on va garder
+            // uniquement les tâches dont l'id est différent de celui
+            // qu'on a en paramètre de notre fonction
+            // filter
+            const filteredTasks = tasks.filter(task => task.id !== id)
+            setTasks(filteredTasks);
+        })
+    }
+
+    const updateTask = (task) => {
+        console.log(`La tâche numéro ${task.id} va être ${task.completed ? 'décomplétée': 'complétée'}`)
+        // false -> true
+        // true -> false
+        task.completed = !task.completed;
+
+        axios.put(`https://jsonplaceholder.typicode.com/todos/${task.id}`, task)
+        .then(res => {
+            console.log(res);
+
+
+            // Faire une copie de tasks (indice: ...)
+            
+            // Trouver l'index de l'élément dans la copie de mon tableau qui correspond
+            // à ma tâche -> méthode findIndex
+            
+            // Modifier l'élément grâce à son index
+            // untableau[9] = qqchose
+
+            // Vous allez mettre à jour votre état avec la copie du tableau
+        })
+    }
+
     const hello = (firstname) => {
         console.log(firstname)
     }
+
 
     return (
         <div>
@@ -52,7 +91,15 @@ export default function TaskPage() {
             <h2 onClick={() => hello("Jean")}>Liste des tâches</h2>
             <ul>
                 {tasks.map(task => 
-                    <li key={task.id}>{task.title}</li>
+                    <li key={task.id} className={task.completed ? "completed" : ""}>
+                        {task.title} 
+                         
+                        <button onClick={() => updateTask(task)}>
+                            {task.completed ? "Décompléter" : "Compléter" }
+                        </button>
+                        
+                        <button onClick={() => deleteTask(task.id)}>Supprimer</button>
+                    </li>
                 )}
                 
             </ul>
