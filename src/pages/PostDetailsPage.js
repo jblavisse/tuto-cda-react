@@ -9,7 +9,7 @@ export default function PostDetailsPage() {
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts/'+ id)
         .then(res => setPost(res.data))
-    }, [])
+    }, [id])
     
     return (
         <div>

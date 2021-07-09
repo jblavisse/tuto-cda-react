@@ -1,10 +1,11 @@
 import './App.css';
-import {BrowserRouter as Router, Link, NavLink, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, NavLink, Route, Switch} from "react-router-dom";
 import UserListPage from './pages/UserListPage';
 import CommentListPage from './pages/CommentListPage';
 import PostListPage from './pages/PostListPage';
 import PostDetailsPage from './pages/PostDetailsPage';
 import HomePage from './pages/HomePage';
+import TaskPage from './pages/TaskPage';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
 
           <Route path="/posts/:id" component={PostDetailsPage} />
           <Route path="/posts" component={PostListPage} />
+
+          <Route path="/tasks" component={TaskPage} />
 
           <Route path="/" component={HomePage} />
         </Switch>
