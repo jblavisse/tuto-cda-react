@@ -15,6 +15,7 @@ function App() {
           <NavLink to="/posts">Mes articles</NavLink>
           <NavLink to="/comments">Mes commentaires</NavLink>
           <NavLink to="/users">Mes utilisateurs</NavLink>
+          <NavLink to="/tasks">Mes tâches</NavLink>
         </nav>
 
         <Switch>

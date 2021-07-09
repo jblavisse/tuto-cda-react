@@ -1,9 +1,16 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 
 export default function TaskPage() {
     const [title,setTitle] = useState("");
     const [completed,setCompleted] = useState(false);
+
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        axios.get('https://jsonplaceholder.typicode.com/todos')
+        .then(res => setTasks(res.data));
+    }, [])
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
@@ -19,15 +26,19 @@ export default function TaskPage() {
 
         axios.post('https://jsonplaceholder.typicode.com/todos', newTask)
         .then(res => {
-            console.log(res.data);
-            // Ajouter ce que je viens de recevoir dans un tableau de tâches
+            setTasks([...tasks, res.data]);
         })
+    }
+
+    const hello = (firstname) => {
+        console.log(firstname)
     }
 
     return (
         <div>
-            <h1>Créer une tâche</h1>
+            <h1>Ma Todolist</h1>
 
+            <h2>Créer une tâche</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={title}
                     onChange={handleTitle}
@@ -37,6 +48,14 @@ export default function TaskPage() {
                     />
                 <button type="submit">Envoyer</button>
             </form>
+
+            <h2 onClick={() => hello("Jean")}>Liste des tâches</h2>
+            <ul>
+                {tasks.map(task => 
+                    <li key={task.id}>{task.title}</li>
+                )}
+                
+            </ul>
         </div>
     )
 }
